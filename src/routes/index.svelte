@@ -2,13 +2,10 @@
   // // @ts-nocheck
     import { firebaseConfig } from '../lib/firebase.js';
     import { initializeApp } from 'firebase/app';
-    import {
-      getFirestore, collection, onSnapshot,
-      doc,
-      query,
-      orderBy, 
-      getDoc, updateDoc
-    } from 'firebase/firestore'
+    // import {
+    //   getFirestore, collection, onSnapshot,
+    //   doc, query, orderBy, getDoc, updateDoc
+    // } from 'firebase/firestore'
 
     //variables
     let todos = [];
@@ -76,7 +73,6 @@
         <p>No todos found</p>
       {/each}
     </ol> -->
-    hi
   
   </main>
   
