@@ -1,25 +1,59 @@
 <script>
-  import { todos } from './todos';
-  import Footer from '../components/Footer.svelte'
+// @ts-nocheck
 
-  const markComplete = () => {
+  // imports
+  import { onMount } from 'svelte';
+  import { firebaseConfig } from '../lib/firebase';
+  import { initializeApp } from 'firebase/app';
+  import {
+    getFirestore, collection, onSnapshot,
+    addDoc, deleteDoc, doc,
+    query, where,
+    orderBy, serverTimestamp,
+    getDoc, updateDoc
+  } from 'firebase/firestore'
+
+  //variables
+  let todos = [];
+  let prevIsComplete;
+
+  // init firebase app
+  initializeApp(firebaseConfig);
+  const db = getFirestore();
+  const colRef = collection(db, 'todos');
+  const q = query(colRef, orderBy('createdAt')); 
+
+  // store realtime data into todos
+  onMount(async () => {
+    onSnapshot(q, (snapshot) => { 
+      let todoList = [];
+      snapshot.docs.forEach((doc) => {
+        todoList.push({ ...doc.data(), id: doc.id })
+      })
+      todos = todoList;
+
+      console.log(todos);
+    })
+  });
+
+  const markComplete = (id) => {
+    const docRef = doc(db, 'todos', id);
+    getDoc(docRef)
+      .then((doc) => {
+        updateDoc(docRef, {
+        isComplete: !doc.data().isComplete,
+        })
+        console.log(prevIsComplete);
+      })
 
   }
-</script>
 
-<svelte:head>
-  <title>
-    Fervo
-  </title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap');
-  </style>
-</svelte:head>
+</script>
 
 <main class="text-white my-[49px] mx-[35px]">
 
   <section class="flex justify-between items-center font-bold mb-10">
-    <div class="">
+    <div>
       <h1 class="text-[50px]">To-do</h1>
       <h2 class="text-[30px]">Due @ 9:00 PM</h2>
     </div>
@@ -27,27 +61,27 @@
   </section>
 
   <ol>
-    {#each $todos as todo (todo.id)}
+    {#each todos as { task, desc, isComplete, id }, index}
       <li>
-        <div class="flex items-center mt-5 mb-2">
-          <div class="circle"/>
-          <h2 class="text-[30px] font-bold mt-2" class:complete={todo.isComplete}>
-            {todo.task}
+        <div class="flex items-center mt-5 mb-2" on:click={() => markComplete(id)}>
+          <div class="circle" class:filled-circle={isComplete} />
+
+          <h2 class="text-[30px] font-bold mt-2" class:strikethrough={isComplete}>
+            {task}
           </h2>
         </div>
-        <p class="mb-16">
-          {todo.desc}
+        <p class="mb-16" class:strikethrough={isComplete}>
+          {desc}
         </p>
-        {#if todo.id != 3}
+        {#if index != 2}
           <hr/>
         {/if}
       </li>
-    {:else}
-      <p>No todos found</p>
+    <!-- {:else}
+      <p>No todos found</p> -->
     {/each}
   </ol>
 
-  <Footer />
 
 </main>
 
@@ -62,8 +96,18 @@
     margin-right: 15px;
   }
 
+  .filled-circle {
+    border: none;    
+    background-color: white;
+
+  }
+
+  .strikethrough {
+    text-decoration: line-through;
+  }
+
   hr {
-    border-top: 5px solid white;
-    border-radius: 20px;
+    border: 2px solid white;
+    border-radius: 50px;
   }
 </style>

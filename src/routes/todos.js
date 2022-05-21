@@ -5,7 +5,7 @@ export const todos = writable([
     id: 1,
     task: 'Finish Article',
     desc: 'Become the Snowden of USC',
-    isComplete: false,
+    isComplete: true,
   },
   {
     id: 2,
