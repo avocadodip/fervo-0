@@ -1,17 +1,17 @@
 <script>
 // @ts-nocheck
 
-  // imports
-  // import { onMount } from 'svelte';
-  // import { firebaseConfig } from '../lib/firebase';
-  // import { initializeApp } from 'firebase/app';
-  // import {
-  //   getFirestore, collection, onSnapshot,
-  //   addDoc, deleteDoc, doc,
-  //   query, where,
-  //   orderBy, serverTimestamp,
-  //   getDoc, updateDoc
-  // } from 'firebase/firestore'
+  imports
+  import { onMount } from 'svelte';
+  import { firebaseConfig } from '../lib/firebase.js';
+  import { initializeApp } from 'firebase/app';
+  import {
+    getFirestore, collection, onSnapshot,
+    addDoc, deleteDoc, doc,
+    query, where,
+    orderBy, serverTimestamp,
+    getDoc, updateDoc
+  } from 'firebase/firestore'
 
   //variables
   let todos = [];
