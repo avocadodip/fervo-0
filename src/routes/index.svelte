@@ -2,7 +2,7 @@
 // @ts-nocheck
 
   // imports
-  // import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { firebaseConfig } from '../lib/firebase';
   import { initializeApp } from 'firebase/app';
   import {
@@ -24,7 +24,7 @@
   const q = query(colRef, orderBy('createdAt')); 
 
   // store realtime data into todos
-  // onMount(async () => {
+  onMount(async () => {
     onSnapshot(q, (snapshot) => { 
       let todoList = [];
       snapshot.docs.forEach((doc) => {
@@ -34,7 +34,7 @@
 
       console.log(todos);
     })
-  // });
+  });
 
   const markComplete = (id) => {
     const docRef = doc(db, 'todos', id);
