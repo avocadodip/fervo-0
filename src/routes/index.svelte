@@ -2,10 +2,10 @@
   // // @ts-nocheck
     import { firebaseConfig } from '../lib/firebase.js';
     import { initializeApp } from 'firebase/app';
-    // import {
-    //   getFirestore, collection, onSnapshot,
-    //   doc, query, orderBy, getDoc, updateDoc
-    // } from 'firebase/firestore'
+    import {
+      getFirestore, collection, onSnapshot,
+      doc, query, orderBy, getDoc, updateDoc
+    } from 'firebase/firestore'
 
     //variables
     let todos = [];
@@ -17,28 +17,28 @@
     const colRef = collection(db, 'todos');
     const q = query(colRef, orderBy('createdAt')); 
   
-    // store realtime data into todos
-    onSnapshot(q, (snapshot) => { 
-      let todoList = [];
-      snapshot.docs.forEach((doc) => {
-        todoList.push({ ...doc.data(), id: doc.id })
-      })
-      todos = todoList;
+    // // store realtime data into todos
+    // onSnapshot(q, (snapshot) => { 
+    //   let todoList = [];
+    //   snapshot.docs.forEach((doc) => {
+    //     todoList.push({ ...doc.data(), id: doc.id })
+    //   })
+    //   todos = todoList;
 
-      console.log(todos);
-    })
+    //   console.log(todos);
+    // })
   
-    const markComplete = (id) => {
-      const docRef = doc(db, 'todos', id);
-      getDoc(docRef)
-        .then((doc) => {
-          updateDoc(docRef, {
-          isComplete: !doc.data().isComplete,
-          })
-          console.log(prevIsComplete);
-        })
+    // const markComplete = (id) => {
+    //   const docRef = doc(db, 'todos', id);
+    //   getDoc(docRef)
+    //     .then((doc) => {
+    //       updateDoc(docRef, {
+    //       isComplete: !doc.data().isComplete,
+    //       })
+    //       console.log(prevIsComplete);
+    //     })
   
-    }
+    // }
   
   </script>
   
