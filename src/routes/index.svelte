@@ -1,53 +1,53 @@
 <script>
   // // @ts-nocheck
-    import { firebaseConfig } from '../lib/firebase.js';
-    import { initializeApp } from 'firebase/app';
-    import {
-      getFirestore, collection, onSnapshot,
-      addDoc, deleteDoc, doc,
-      query, where,
-      orderBy, serverTimestamp,
-      getDoc, updateDoc
-    } from 'firebase/firestore'
+    // import { firebaseConfig } from '../lib/firebase.js';
+    // import { initializeApp } from 'firebase/app';
+    // import {
+    //   getFirestore, collection, onSnapshot,
+    //   addDoc, deleteDoc, doc,
+    //   query, where,
+    //   orderBy, serverTimestamp,
+    //   getDoc, updateDoc
+    // } from 'firebase/firestore'
   
-    //variables
-    let todos = [];
-    let prevIsComplete;
+    // //variables
+    // let todos = [];
+    // let prevIsComplete;
   
-    // init firebase app
-    initializeApp(firebaseConfig);
-    const db = getFirestore();
-    const colRef = collection(db, 'todos');
-    const q = query(colRef, orderBy('createdAt')); 
+    // // init firebase app
+    // initializeApp(firebaseConfig);
+    // const db = getFirestore();
+    // const colRef = collection(db, 'todos');
+    // const q = query(colRef, orderBy('createdAt')); 
   
-    // store realtime data into todos
-    onSnapshot(q, (snapshot) => { 
-      let todoList = [];
-      snapshot.docs.forEach((doc) => {
-        todoList.push({ ...doc.data(), id: doc.id })
-      })
-      todos = todoList;
+    // // store realtime data into todos
+    // onSnapshot(q, (snapshot) => { 
+    //   let todoList = [];
+    //   snapshot.docs.forEach((doc) => {
+    //     todoList.push({ ...doc.data(), id: doc.id })
+    //   })
+    //   todos = todoList;
 
-      console.log(todos);
-    })
+    //   console.log(todos);
+    // })
   
-    const markComplete = (id) => {
-      const docRef = doc(db, 'todos', id);
-      getDoc(docRef)
-        .then((doc) => {
-          updateDoc(docRef, {
-          isComplete: !doc.data().isComplete,
-          })
-          console.log(prevIsComplete);
-        })
+    // const markComplete = (id) => {
+    //   const docRef = doc(db, 'todos', id);
+    //   getDoc(docRef)
+    //     .then((doc) => {
+    //       updateDoc(docRef, {
+    //       isComplete: !doc.data().isComplete,
+    //       })
+    //       console.log(prevIsComplete);
+    //     })
   
-    }
+    // }
   
   </script>
   
   <main class="text-white my-[49px] mx-[35px]">
   
-    <section class="flex justify-between items-center font-bold mb-10">
+    <!-- <section class="flex justify-between items-center font-bold mb-10">
       <div>
         <h1 class="text-[50px]">To-do</h1>
         <h2 class="text-[30px]">Due @ 9:00 PM</h2>
@@ -75,8 +75,8 @@
       {:else}
         <p>No todos found</p>
       {/each}
-    </ol>
-  
+    </ol> -->
+    hi
   
   </main>
   
