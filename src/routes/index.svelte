@@ -7,15 +7,15 @@
       doc, query, orderBy, getDoc, updateDoc
     } from 'firebase/firestore'
 
-    //variables
-    let todos = [];
-    let prevIsComplete;
+    // //variables
+    // let todos = [];
+    // let prevIsComplete;
   
-    // init firebase app
-    initializeApp(firebaseConfig);
-    const db = getFirestore();
-    const colRef = collection(db, 'todos');
-    const q = query(colRef, orderBy('createdAt')); 
+    // // init firebase app
+    // initializeApp(firebaseConfig);
+    // const db = getFirestore();
+    // const colRef = collection(db, 'todos');
+    // const q = query(colRef, orderBy('createdAt')); 
   
     // // store realtime data into todos
     // onSnapshot(q, (snapshot) => { 
