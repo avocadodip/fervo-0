@@ -1,4 +1,4 @@
-<footer class="fixed inset-x-0 bottom-0 p-7">
+<div class="fixed inset-x-0 bottom-0 p-7">
   <div class="flex justify-between text-white">
     <div class="flex">
       <a href='/'>
@@ -23,4 +23,4 @@
     </div>
 
   </div>
-</footer>
+</div>
