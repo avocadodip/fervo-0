@@ -1,6 +1,4 @@
 <script>
-// @ts-nocheck
-
 	import '../app.css';
 	import Footer from '../components/Footer.svelte';
 
