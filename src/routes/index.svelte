@@ -1,14 +1,14 @@
 <script>
   // // @ts-nocheck
-    // import { firebaseConfig } from '../lib/firebase.js';
-    // import { initializeApp } from 'firebase/app';
-    // import {
-    //   getFirestore, collection, onSnapshot,
-    //   addDoc, deleteDoc, doc,
-    //   query, where,
-    //   orderBy, serverTimestamp,
-    //   getDoc, updateDoc
-    // } from 'firebase/firestore'
+    import { firebaseConfig } from '../lib/firebase.js';
+    import { initializeApp } from 'firebase/app';
+    import {
+      getFirestore, collection, onSnapshot,
+      addDoc, deleteDoc, doc,
+      query, where,
+      orderBy, serverTimestamp,
+      getDoc, updateDoc
+    } from 'firebase/firestore'
   
     // //variables
     // let todos = [];
