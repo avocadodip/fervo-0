@@ -1,6 +1,5 @@
 <script>
 // @ts-nocheck
-
   import { onMount } from 'svelte';
   import { firebaseConfig } from '../lib/firebase.js';
   import { initializeApp } from 'firebase/app';

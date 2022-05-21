@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import Footer from '../components/Footer.svelte'; 
+	// import Footer from '../components/Footer.svelte'; 
 
 </script>
 
@@ -9,10 +9,10 @@
     Fervo
   </title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap');
+    /* @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap'); */
   </style>
 </svelte:head>
 
 <slot />
 
-<Footer />
+<!-- <Footer /> -->
