@@ -23,7 +23,7 @@
   const q = query(colRef, orderBy('createdAt')); 
 
   // store realtime data into todos
-  onMount(async () => {
+  onMount(() => {
     onSnapshot(q, (snapshot) => { 
       let todoList = [];
       snapshot.docs.forEach((doc) => {
