@@ -1,7 +1,6 @@
 <script>
   // // @ts-nocheck
-  //   import { onMount } from 'svelte';
-  //   import { firebaseConfig } from '../lib/firebase.js';
+    import { firebaseConfig } from '../lib/firebase.js';
     import { initializeApp } from 'firebase/app';
     import {
       getFirestore, collection, onSnapshot,
@@ -22,32 +21,30 @@
     const q = query(colRef, orderBy('createdAt')); 
   
     // store realtime data into todos
-    onMount(() => {
-      onSnapshot(q, (snapshot) => { 
-        let todoList = [];
-        snapshot.docs.forEach((doc) => {
-          todoList.push({ ...doc.data(), id: doc.id })
-        })
-        todos = todoList;
-  
-        console.log(todos);
+    onSnapshot(q, (snapshot) => { 
+      let todoList = [];
+      snapshot.docs.forEach((doc) => {
+        todoList.push({ ...doc.data(), id: doc.id })
       })
-    });
+      todos = todoList;
+
+      console.log(todos);
+    })
   
-  //   const markComplete = (id) => {
-  //     const docRef = doc(db, 'todos', id);
-  //     getDoc(docRef)
-  //       .then((doc) => {
-  //         updateDoc(docRef, {
-  //         isComplete: !doc.data().isComplete,
-  //         })
-  //         console.log(prevIsComplete);
-  //       })
+    const markComplete = (id) => {
+      const docRef = doc(db, 'todos', id);
+      getDoc(docRef)
+        .then((doc) => {
+          updateDoc(docRef, {
+          isComplete: !doc.data().isComplete,
+          })
+          console.log(prevIsComplete);
+        })
   
-  //   }
+    }
   
   </script>
-<!--   
+  
   <main class="text-white my-[49px] mx-[35px]">
   
     <section class="flex justify-between items-center font-bold mb-10">
@@ -75,13 +72,13 @@
             <hr/>
           {/if}
         </li>
-      <!-- {:else}
-        <p>No todos found</p> -->
+      {:else}
+        <p>No todos found</p>
       {/each}
     </ol>
   
   
-  </main> -->
+  </main>
   
   <style>
     .circle {
